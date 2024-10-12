@@ -1,0 +1,144 @@
+:root {
+    --black: black;
+    --purple: purple;
+    --light-color: #666;
+    --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    --dark-pink:#b06f92;
+    --box-shadow: 2px 2px 12px grey;
+  }
+* {
+    font-family: "andika";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: all -2s linear;
+  }
+body {
+    background: #fff;
+  }
+
+  html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+  }
+h1 {
+    font-size:50px;
+    line-height:64px;
+    color:#222;
+}
+h2 {
+    font-size: 46px;
+    line-height: 54px;
+    color: burlywood;
+}
+h4 {
+    font-size: 20px;
+    color: darkorange;
+}
+h6 {
+    font-weight:700;
+    font-size:12px;
+}
+p {
+    font-size:16px;
+    color: cadetblue;
+    margin: 15px 0 20px 0;
+}
+
+body {
+    width:100%;
+}
+
+.section-p1 {
+    padding-top: 12%;
+    padding-bottom: 40px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.small-img-col {
+    flex-basis:24%;
+    cursor:pointer;
+}
+#cart table {
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    white-space:nowrap;
+}
+    #cart table img {
+        width:70px;
+    }
+    #cart table td:nth-child(1) {
+        width:100px;
+        text-align:center;
+    }
+    #cart table td:nth-child(2) {
+        width: 150px;
+        text-align: center;
+    }
+    #cart table td:nth-child(3) {
+        width: 250px;
+        text-align: center;
+    }
+    #cart table td:nth-child(4),
+    #cart table td:nth-child(5),
+    #cart table td:nth-child(6) {
+        width: 150px;
+        text-align: center;
+    }
+        #cart table td:nth-child(5) input {
+            width:70px;
+            padding:10px 5px 10px 15px;
+        }
+    #cart table thead {
+        border: 1px solid blue;
+        border-left:none;
+        border-right:none;
+    }
+
+        #cart table thead td {
+            font-weight:700;
+            text-transform:uppercase;
+            font-size:13px;
+            padding: 18px 0;
+        }
+    #cart table tbody tr td {
+        padding-top:15px;
+    }
+    #cart table tbody  td {
+        font-size:13px;
+    }
+.fa{
+font-size: 40px;
+}
+    @media (max-width: 768px) {
+        .section-p1{
+            padding-top: 5%;
+
+        }
+        #cart table{
+            margin-top: 70%;
+            height: 600px;
+        }
+        #cart table tbody td{
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        #cart table thead tr td{
+            font-size: 20px;
+            font-weight: 900;
+        }
+        #cart table img{
+            width: 90px;
+        }
+        .remove-item{
+            font-size: 30px;
+            font-weight: 900;
+        }
+      
+    }    

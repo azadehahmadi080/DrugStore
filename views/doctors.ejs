@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor pge</title>
+
+    <!-- link for css file -->
+    <link rel="stylesheet" href="/doctors.css" />
+    <!-- link for css file -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  </head>
+  <body>
+    <%- include("partials/navbar.ejs") %>
+    <section class="top" id="top">
+      <div class="container">
+        <h1 class="heading">TOP SPECIALTIES</h1>
+        <hr />
+      </div>
+      <div class="box-container">
+        <% doctors.forEach(medicine => { %>
+        <div class="box">
+          <img src="<%= medicine.image_url %>" alt="" />
+          <h1 class="title"><%= medicine.name %></h1>
+          <p><%= medicine.description1 %></p>
+          <p><%= medicine.description2 %></p>
+          <a href="#" class="btn">Read More...</a>
+        </div>
+        <% }); %>
+      </div>
+    </section>
+    <%- include("partials/footer2.ejs") %>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Page</title>
+     <!-- linkn for css file -->
+     <link rel="stylesheet" href="/shop.css">
+      <!-- linkn for css file -->
+
+       <!-- library -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <!-- library -->
+        <!-- <script src="/shop.js"></script> -->
+
+</head>
+<body>
+  <%- include("partials/navbar.ejs") %>
+       <section class="top" id="top">
+        <div class="container">
+            <h1 class="heading">WELLNESS</h1><hr>
+        </div>
+        <div class="box-container">
+            <% medicines.forEach(medicine => { %>
+                <div class="box" onclick="window.location.href='sproduct2.html'">
+                    <div class="slide-img">
+                        <img src="<%= medicine.image_url %>" >
+                        <div class="overlay">
+                            <p><%= medicine.description %></p>
+                            <a href="/product/<%= medicine.id %>" class="learn-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half"></i>
+                    </div>
+                    <div class="detail-box">
+                        <div class="type">
+                            <a href="#"><%= medicine.name %></a>
+                            <span>New Arrival</span>
+                        </div>
+                        <a href="#" class="price">$<%= medicine.price %></a>
+                    </div>
+                    <a  href="/product/<%= medicine.id %>" class="my-button" title="b-title">Add to Cart</a>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+
+    
+
+
+    <!-- link for js file -->
+     <!-- <script src="medicine.js"></script> -->
+     <!-- link for js file -->
+
+     <%- include("partials/footer2.ejs") %>
+</body>
+</html>

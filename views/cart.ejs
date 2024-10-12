@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="/cart.css">
+    <script src="/public/script2.js"></script>
+          <!-- library -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <!-- library -->
+
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <%- include("partials/navbar.ejs") %>
+    <section id="cart" class="section-p1">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <% if (cartItems.length > 0) { %>
+                    <% cartItems.forEach(item => { %>
+                        <tr id="cart-item-<%= item.product_id %>">
+                            <td><a href="#" onclick="removeFromCart(<%= item.product_id %>)"><i style="font-size: 20px;" class="fa fa-times-circle remove-item"></i></a></td>
+                            <td ><img src="<%= item.image %>" alt="<%= item.name %>"></td>
+                            <td><%= item.name %></td>
+                            <td><%= item.price %> tk</td>
+                            <td><%= item.quantity %></td>
+                            <td><%= item.total %> tk</td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="6" style="text-align:center;">Shopping cart is empty.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </section>
+    <section id="cart-add" class="section-p1">
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table  id="subtotal-table">
+                <tr>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <script src="script2.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const userId = "<%= userId || '' %>"; // Get userId From EJS
+
+       
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+       
+        if (userId && cart.length === 0) {
+            try {
+                const response = await fetch('/cart'); 
+                cart = await response.json();
+                localStorage.setItem('cart', JSON.stringify(cart)); // Save Into localStorage
+            } catch (error) {
+                console.error('Error to load shopping cart:', error);
+            }
+        }
+
+        // show shopping cart  
+        const cartItemsElement = document.getElementById('cart-items');
+        let subtotal = 0;
+
+        if (cart.length === 0) {
+            const emptyRow = document.createElement('tr');
+            emptyRow.innerHTML = `<td colspan="6" style="text-align:center;">Shopping cart is empty.</td>`;
+            cartItemsElement.appendChild(emptyRow);
+        } else {
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.id = `cart-item-${item.id}`;
+                row.innerHTML = `
+                    <td><a href="#" onclick="removeFromCart(${item.id})"><i style="font-size: 20px;" class="fa fa-times-circle remove-item"></i></a></td>
+                    <td><img src="${item.image}" alt="${item.name}"></td>
+                    <td>${item.name}</td>
+                    <td>${item.price} tk</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.total} tk</td>
+                `;
+                cartItemsElement.appendChild(row);
+                subtotal += item.total; // Calculate subtotal
+            });
+
+            // show subtotal
+            const subtotalElement = document.createElement('tr');
+            subtotalElement.innerHTML = `<td colspan="5">Subtotal</td><td>${subtotal} tk</td>`;
+            document.querySelector('#subtotal-table').appendChild(subtotalElement);
+        }
+    });
+</script>
+
+<%- include("partials/footer2.ejs") %>
+</body>
+</html>
+
+

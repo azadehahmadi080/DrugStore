@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="/image/logo.png" alt="Company Logo" />
+        </a>
+
+        <nav class="navbar">
+            <a href="/home">Home</a>
+            <a href="/doctors">Doctors</a>
+            <a href="/shop">Shop</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <div class="button">
+            <form action="/logout" method="POST">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+
+        <div class="toggle-button" onclick="toggleNavbar()">
+            <i class="fas fa-bars"></i> <!-- Open Icon -->
+        </div>
+    </header>
+<script>
+    function toggleNavbar() {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('active');
+        const toggleButton = document.querySelector('.toggle-button i');
+        toggleButton.classList.toggle('fa-bars');
+        toggleButton.classList.toggle('fa-times'); // Change To Close Icon
+    }
+</script>
+</body>
+</html>

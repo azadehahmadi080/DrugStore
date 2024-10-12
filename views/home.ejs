@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="/home.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <% if (success_msg.length > 0) { %>
+        <div class="alert alert-success"><%= success_msg %></div>
+    <% } %>
+
+    <%- include("partials/navbar.ejs") %>
+    <section class="main">
+        <div class="left">
+            <h2>We Are Here For Your Care</h2>
+            <h1>We Are The Best Pharmacy</h1>
+            <p>We are here for your care 24/7 Any help just call us</p>
+            <button> <a href="/contact">Contact  With Us</a></button>
+        </div>
+        <div class="right">
+            <img src="image/w1.png" alt="">
+        </div>
+    </section>
+
+    <section class="top" id="top">
+        <div class="container">
+            <h1 class="heading">medicines</h1><hr>
+        </div>
+        <div class="box-container">
+            <% medicines.forEach(medicine => { %>
+                <div class="box" onclick="window.location.href='sproduct2.html'">
+                    <div class="slide-img">
+                        <img src="<%= medicine.image_url %>" >
+                        <div class="overlay">
+                            <p><%= medicine.description %></p>
+                            <a href="/product/<%= medicine.id %>" class="learn-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half"></i>
+                    </div>
+                    <div class="detail-box">
+                        <div class="type">
+                            <a href="#"><%= medicine.name %></a>
+                            <span>New Arrival</span>
+                        </div>
+                        <a href="#" class="price">$<%= medicine.price %></a>
+                    </div>
+                    <a  href="/product/<%= medicine.id %>" class="my-button" title="b-title">Add to Cart</a>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+    <%- include("partials/footer2.ejs") %>
+</body>
+</html>
+

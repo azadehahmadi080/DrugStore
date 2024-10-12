@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= medicine.name %></title>
+    <link rel="stylesheet" href="/sproduct2.css">
+    <script src="/script2.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <%- include("partials/navbar.ejs") %>
+<main >
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+        <!--Add one Picture -->
+            <img src="<%= medicine.image_url %>" id="mainImg" width="100%">
+        </div>
+        <div class="single-pro-details">
+            <h6 id="prodts"><%= medicine.name %></h6>
+            <h4 class="heading-4tablet"><%= medicine.name %> tablet</h4>
+            <h2>MRP: <span id="adPrice"><%= medicine.price %></span> tk</h2>
+            <input class="input1" type="number" value="1" id="quantity">
+            <button id="adCardButton" class="normal" onclick="addToCart(<%= medicine.id %>, '<%= medicine.image_url %>', '<%= medicine.name %>', <%= medicine.price %>)">Add to Cart</button>
+            <h4 class="heading-4">Product details</h4>
+            <span class="info-span">
+                <%= medicine.description %>
+            </span>
+        </div>
+    </section>
+</main>
+
+    <%- include("partials/footer2.ejs") %>
+</body>
+</html>
+

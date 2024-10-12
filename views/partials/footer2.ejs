@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Footer</title>
+    <style>
+        footer {
+            width: 100%;
+            background-color: rgb(62, 56, 56);
+            color: #ffff;
+            padding: 20px;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: auto; 
+            margin-top: 20px; 
+        }
+
+        footer .about {
+            margin: 0; 
+        }
+
+        nav {
+            margin-top: 10px; 
+        }
+
+        nav a {
+            color: #ffff;
+            margin: 0 5px;
+            text-decoration: none; 
+        }
+
+        nav a:hover {
+            text-decoration: underline; 
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                font-size: 10px; 
+            }
+            nav a {
+                margin: 0 3px; 
+            }
+        }
+    </style>
+</head>
+<body>
+  
+
+    <footer>
+        <p class="about">
+            © <span id="currentYear"></span> Blog. All rights reserved.
+        </p>
+        <nav>
+            <a href="/home">About Us</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </footer>
+
+    <script>
+        var date = new Date().getFullYear();
+        document.getElementById("currentYear").innerHTML = date;
+    </script>
+</body>
+</html>

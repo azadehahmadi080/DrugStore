@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+
+    <!-- link for css file -->
+    <link rel="stylesheet" href="/contact.css" />
+    <!-- link for css file -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <%- include("partials/navbar.ejs") %>
+   
+    <div class="container">
+      <div class="text">Contact Us</div>
+      <form action="/contact" method="post">
+        <div class="form-row">
+          <div class="input-data">
+            <input type="text" name="first_name" id="first_name" required />
+            <div class="underline"></div>
+            <label for="first_name">First Name</label>
+          </div>
+
+          <div class="input-data">
+            <input type="text" name="last_name" id="last_name" required />
+            <div class="underline"></div>
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-data">
+            <input type="text" name="email" id="email" required />
+            <div class="underline"></div>
+            <label for="email">Email Address</label>
+          </div>
+
+          <div class="input-data">
+            <input type="password" name="password" id="password" required />
+            <div class="underline"></div>
+            <label for="password">Password Name</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-data textarea">
+            <textarea cols="30" rows="10" name="message" required></textarea>
+            <div class="underline"></div>
+            <label for="message">Write your message</label>
+          </div>
+        </div>
+
+        <div class="form-row submit-btn">
+          <div class="input-data">
+            <div class="inner"></div>
+            <input type="submit" value="Submit" />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <%- include("partials/footer2.ejs") %>
+  </body>
+</html>
