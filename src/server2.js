@@ -16,13 +16,33 @@ if (process.env.NODE_ENV !== "production") {
 
 
   // Connecting Settings to database
+// const pool = new Pool({
+//     user: 'postgres', // Username of the database
+//     host: 'localhost',
+//     database: 'userdb', // Name of database
+//     password: 'postgres', // Password
+//     port: 5432, //  PostgreSQL Port
+// });
+
+
+// Debugging: Log environment variables
+console.log("Environment Variables Loaded:");
+console.log("DB_USER:", process.env.DB_USER);
+console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
+console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_NAME:", process.env.DB_NAME);
+console.log("DB_PORT:", process.env.DB_PORT);
+
+
+
 const pool = new Pool({
-    user: 'postgres', // Username of the database
-    host: 'localhost',
-    database: 'userdb', // Name of database
-    password: 'postgres', // Password
-    port: 5432, //  PostgreSQL Port
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: parseInt(process.env.DB_PORT) || 5432,
 });
+
 
 
 
@@ -115,15 +135,32 @@ app.get("/home", async (req, res) => {
   }
 
   try {
-      const result = await pool.query('SELECT * FROM medicines');
-      const medicines = result.rows;
-      res.render("home.ejs", { medicines, userId: req.user.id }); // Send userId to view
+      const result = await pool.query('SELECT * FROM medicines2');
+      const medicines2 = result.rows;
+      res.render("home.ejs", { medicines2, userId: req.user.id }); // Send userId to view
   } catch (error) {
       console.error(error);
       res.status(500).send("Error loading data");
   }
 });
 
+
+
+
+app.get("/product/:id2", async (req, res) => {
+  const id = req.params.id2;
+  try {
+      const result = await pool.query('SELECT * FROM medicines2 WHERE id = $1', [id]);
+      const medicine = result.rows[0]; 
+      if (!medicine) {
+          return res.status(404).send("The drug was not found  ");
+      }
+      res.render("sproduct2home.ejs", { medicine }); // Send drug information to view
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("خطا در بارگذاری داده‌ها");
+  }
+});
 
 
 
@@ -253,7 +290,11 @@ app.post('/contact', async (req, res) => {
   const { first_name, last_name, yahoo, message } = req.body;
 
   const transporter = nodemailer.createTransport({
-      service: 'Yahoo', 
+      // service: 'Yahoo', 
+
+      host: 'smtp.mail.yahoo.com', // استفاده از SMTP Yahoo
+      port: 465, // پورت برای SSL
+      secure: true, // true برای استفاده از SSL
       auth: {
           user: process.env.EMAIL, 
           pass: process.env.EMAIL_PASSWORD 

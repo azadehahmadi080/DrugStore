@@ -1,15 +1,28 @@
-
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const { Pool } = require('pg');
 
 // Setting  Connect to  Database 
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'userdb',
+//   password: 'postgres',
+//   port: 5432,
+// });
+
+
+
+
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'userdb',
-  password: 'postgres',
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: parseInt(process.env.DB_PORT) || 5432,
 });
 
 // Function  for  get  user based Email
