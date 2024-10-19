@@ -4,7 +4,11 @@ if (process.env.NODE_ENV !== "production") {
   
   //Importing Libraries;
   const express = require("express"); 
+  const path = require('path');
   const app = express();
+
+  // Serve static files from the "image" directory
+app.use('/image', express.static(path.join(__dirname, 'image')));
   const bcrypt = require("bcrypt");
   const passport = require("passport");
   const initializePassport = require("./passport-config");
@@ -24,7 +28,6 @@ if (process.env.NODE_ENV !== "production") {
 //     port: 5432, //  PostgreSQL Port
 // });
 
-
 // Debugging: Log environment variables
 console.log("Environment Variables Loaded:");
 console.log("DB_USER:", process.env.DB_USER);
@@ -42,18 +45,32 @@ console.log("DB_PORT:", process.env.DB_PORT);
 //   password: process.env.DB_PASSWORD,
 //   port: parseInt(process.env.DB_PORT) || 5432,
 // });
+
+
+
+
+// const pool = new Pool({
+//   user: process.env.DB_USER,
+//   host: process.env.DB_HOST,
+//   database: process.env.DB_NAME,
+//   password: process.env.DB_PASSWORD,
+//   port: parseInt(process.env.DB_PORT) || 5432,
+//   ssl: {
+//     rejectUnauthorized: false, // Set to true in production if you have valid certificates
+//   },
+// });
+
+
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
   port: parseInt(process.env.DB_PORT) || 5432,
-  ssl: {
+  ssl: process.env.NODE_ENV === 'production' ? {
     rejectUnauthorized: false, // Set to true in production if you have valid certificates
-  },
+  } : false, // Disable SSL for local development
 });
-
-
 
 
 // Middleware
