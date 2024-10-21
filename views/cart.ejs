@@ -15,8 +15,9 @@
 <body>
 
     <%- include("partials/navbar.ejs") %>
+    <main>
     <section id="cart" class="section-p1">
-        <table width="100%">
+        <table >
             <thead>
                 <tr>
                     <td>Remove</td>
@@ -56,6 +57,8 @@
             </table>
         </div>
     </section>
+</main>
+    <%#- include("partials/footer2.ejs") %>
     <script src="script2.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', async () => {
@@ -107,7 +110,7 @@
     });
 </script>
 
-<%- include("partials/footer2.ejs") %>
+
 </body>
 </html>
 

@@ -49,16 +49,7 @@ console.log("DB_PORT:", process.env.DB_PORT);
 
 
 
-// const pool = new Pool({
-//   user: process.env.DB_USER,
-//   host: process.env.DB_HOST,
-//   database: process.env.DB_NAME,
-//   password: process.env.DB_PASSWORD,
-//   port: parseInt(process.env.DB_PORT) || 5432,
-//   ssl: {
-//     rejectUnauthorized: false, // Set to true in production if you have valid certificates
-//   },
-// });
+
 
 
 const pool = new Pool({
@@ -173,26 +164,8 @@ app.get("/home", async (req, res) => {
 
 
 
-
-app.get("/product/:id2", async (req, res) => {
-  const id = req.params.id2;
-  try {
-      const result = await pool.query('SELECT * FROM medicines2 WHERE id = $1', [id]);
-      const medicine = result.rows[0]; 
-      if (!medicine) {
-          return res.status(404).send("The drug was not found  ");
-      }
-      res.render("sproduct2home.ejs", { medicine }); // Send drug information to view
-  } catch (error) {
-      console.error(error);
-      res.status(500).send("خطا در بارگذاری داده‌ها");
-  }
-});
-
-
-
-
-app.get("/product/:id", async (req, res) => {
+// SHOP
+app.get("/product/shop/:id", async (req, res) => {
   const id = req.params.id;
   try {
       const result = await pool.query('SELECT * FROM medicines WHERE id = $1', [id]);
@@ -201,6 +174,25 @@ app.get("/product/:id", async (req, res) => {
           return res.status(404).send("The drug was not found  ");
       }
       res.render("sproduct2.ejs", { medicine }); // Send drug information to view
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Error To loading Data");
+  }
+});
+
+
+
+// HOME
+app.get("/product/home/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log("Product ID:", id);
+  try {
+      const result = await pool.query('SELECT * FROM medicines2 WHERE id = $1', [id]);
+      const medicine = result.rows[0]; 
+      if (!medicine) {
+          return res.status(404).send("The drug was not found  ");
+      }
+      res.render("sproduct2home.ejs", { medicine }); // Send drug information to view
   } catch (error) {
       console.error(error);
       res.status(500).send("خطا در بارگذاری داده‌ها");

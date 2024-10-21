@@ -22,12 +22,12 @@
         </div>
         <div class="box-container">
             <% medicines.forEach(medicine => { %>
-                <div class="box" onclick="window.location.href='sproduct2.html'">
+                <div class="box" onclick="window.location.href='sproduct2.ejs'">
                     <div class="slide-img">
                         <img src="<%= medicine.image_url %>" >
                         <div class="overlay">
                             <p><%= medicine.description %></p>
-                            <a href="/product/<%= medicine.id %>" class="learn-btn">Learn More</a>
+                            <a href="/product/shop/<%= medicine.id %>" class="learn-btn">Learn More</a>
                         </div>
                     </div>
                     <div class="stars">
@@ -44,7 +44,7 @@
                         </div>
                         <a href="#" class="price">$<%= medicine.price %></a>
                     </div>
-                    <a  href="/product/<%= medicine.id %>" class="my-button" title="b-title">Add to Cart</a>
+                    <a  href="/product/shop/<%= medicine.id %>" class="my-button" title="b-title">Add to Cart</a>
                 </div>
             <% }); %>
         </div>

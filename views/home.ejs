@@ -37,7 +37,7 @@
                         <img src="<%= medicine.image_url %>" >
                         <div class="overlay">
                             <p><%= medicine.description %></p>
-                            <a href="/product/<%= medicine.id %>" class="learn-btn">Learn More</a>
+                            <a href="/product/home/<%= medicine.id %>" class="learn-btn">Learn More</a>
                         </div>
                     </div>
                     <div class="stars">
@@ -54,7 +54,7 @@
                         </div>
                         <a href="#" class="price">$<%= medicine.price %></a>
                     </div>
-                    <a  href="/product/<%= medicine.id %>" class="my-button" title="b-title">Add to Cart</a>
+                    <a  href="/product/home/<%= medicine.id %>" class="my-button" title="b-title">Add to Cart</a>
                 </div>
             <% }); %>
         </div>

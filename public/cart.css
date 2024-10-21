@@ -53,10 +53,13 @@ body {
 }
 
 .section-p1 {
+    width: 100%;
     padding-top: 12%;
     padding-bottom: 40px;
-    padding-left: 80px;
-    padding-right: 80px;
+    /* padding-left: 80px;
+    padding-right: 80px; */
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .small-img-col {
@@ -64,10 +67,10 @@ body {
     cursor:pointer;
 }
 #cart table {
-    width:100%;
+    /* width:100%; */
     border-collapse:collapse;
     table-layout:fixed;
-    white-space:nowrap;
+    /* white-space:nowrap; */
 }
     #cart table img {
         width:70px;
@@ -103,14 +106,14 @@ body {
         #cart table thead td {
             font-weight:700;
             text-transform:uppercase;
-            font-size:13px;
+            /* font-size:13px; */
             padding: 18px 0;
         }
     #cart table tbody tr td {
         padding-top:15px;
     }
     #cart table tbody  td {
-        font-size:13px;
+        /* font-size:13px; */
     }
 .fa{
 font-size: 40px;
@@ -118,19 +121,26 @@ font-size: 40px;
     @media (max-width: 768px) {
         .section-p1{
             padding-top: 5%;
+            padding-left: 10px;
+            padding-right: 10px;
 
+        }
+        main{
+            margin-bottom: 250%;
         }
         #cart table{
             margin-top: 70%;
-            height: 600px;
+            /* height: 600px; */
         }
         #cart table tbody td{
-            font-size: 20px;
-            font-weight: 600;
+            /* font-size: 20px; */
+            font-size: 8px;
+            font-weight: 900;
+            /* font-weight: 600; */
         }
 
         #cart table thead tr td{
-            font-size: 20px;
+            /* font-size: 20px; */
             font-weight: 900;
         }
         #cart table img{
