@@ -22,7 +22,7 @@
             <h4 class="heading-4tablet"><%= medicine.name %> tablet</h4>
             <h2>MRP: <span id="adPrice"><%= medicine.price %></span> tk</h2>
             <input class="input1" type="number" value="1" id="quantity">
-            <button id="adCardButton" class="normal" onclick="addToCart(<%= medicine.id %>, '<%=JSON.stringify(medicine.image_url )%>', '<%=JSON.stringify(medicine.name )%>', <%= medicine.price %>)">Add to Cart</button>
+            <button id="adCardButton" class="normal" onclick="addToCart(<%= medicine.id %>, '<%= medicine.image_url)%>', '<%= medicine.name %>', <%= medicine.price %>)">Add to Cart</button>
             <h4 class="heading-4">Product details</h4>
             <span class="info-span">
                 <%= medicine.description %>
